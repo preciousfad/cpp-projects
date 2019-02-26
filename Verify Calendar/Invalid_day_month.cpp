@@ -4,80 +4,77 @@ Program Description: This program is for demonstrating the exception handling
 					with user defined exception classes. Also accounts for leap year.
 ***************************************************************************************/
 
-
-
-
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 
-class invalidDay
-{
-public:
-	invalidDay();
+	class invalidDay
+	{
+	 public:
+		 invalidDay()
+		 {
+			 message = "Invalid input for day";
+		 }
+		 string what()
+		 {
+			 return message;
+		 }
+	 private:
+		 string message;
+	 };
 
-	string what();
+	 class invalidMonth
+	 {
+	 public:
+		 invalidMonth()
+		 {
+			 message = "Invalid input for month";
+		 }
 
-private:
-	string message;
+		 string what()
+		 {
+			 return message;
+		 }
 
-};
-
-class invalidMonth
-{
-public:
-	invalidMonth();
-	
-	string what();
-	
-
-private:
-	string message;
-};
-
-
+	 private:
+		 string message;
+	 };
 
 string smonth(int) ;
 bool leapYear(int);
 bool monthDay(int, int, int) ;
-int main()
- {
 
-	int month, day, year,th;
-	cout << "Hello, please enter your birthday in the format: month-day-year. \nPress enter after each entry"<<endl;
-	cin >> month >> day >> year;
-
-
-	try
-	{
-		string newMonth;	
-		
-		if (month < 1 || month>12) throw invalidMonth();
-		if (monthDay(year,month,day) == false)
-			throw invalidDay();
-		newMonth = smonth(month);
-		
-
-			cout << "\n" << newMonth << ", "<<day << ", "<<year<<endl;
-
-	cin >>th ;
-
-	}
+	int main()
+	 {
+		int month, day, year,th;
+		cout << "Hello, please enter your birthday in the format: month-day-year. \nPress enter after each entry"<<endl;
+		cin >> month >> day >> year;
 	
-	catch (invalidDay invDay)
-	{
-		cout << "Error: " << invDay.what() << endl;
-
-	}catch (invalidMonth invMonth )
-	{
-		cout<< "Error: "<< invMonth.what();
-	}
-	cin >> th;
-	cin.get();
-		 return 0;
- }
+		try
+		{
+			string newMonth;	
+			if (month < 1 || month>12) throw invalidMonth();
+			if (monthDay(year,month,day) == false)
+				throw invalidDay();
+			newMonth = smonth(month);
+			cout << "\n" << newMonth << ", "<<day << ", "<<year<<endl;
+			cin >>th ;
+	
+		}
+		catch (invalidDay invDay)
+		{
+			cout << "Error: " << invDay.what() << endl;
+		}
+		catch (invalidMonth invMonth )
+		{
+			cout<< "Error: "<< invMonth.what();
+		}
+			cin >> th;
+			cin.get();
+		 	return 0;
+ 	}
 
 	 string smonth(int x) 
 	 {
@@ -138,38 +135,4 @@ int main()
 
 	 }
 
-	 class invalidDay
-	 {
-	 public:
-		 invalidDay()
-		 {
-			 message = "Invalid input for day";
-		 }
-
-		 string what()
-		 {
-			 return message;
-		 }
-		 
-	 private:
-		 string message;
-
-	 };
-
-	 class invalidMonth
-	 {
-	 public:
-		 invalidMonth()
-		 {
-			 message = "Invalid input for month";
-		 }
-
-		 string what()
-		 {
-			 return message;
-		 }
-
-	 private:
-		 string message;
-	 };
-
+	 
