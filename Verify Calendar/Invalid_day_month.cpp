@@ -150,7 +150,7 @@ int main()
 		 {
 			 return message;
 		 }
-
+		 
 	 private:
 		 string message;
 
