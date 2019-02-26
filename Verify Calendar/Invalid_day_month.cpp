@@ -51,7 +51,7 @@ bool monthDay(int, int, int) ;
 		int month, day, year,th;
 		cout << "Hello, please enter your birthday in the format: month-day-year. \nPress enter after each entry"<<endl;
 		cin >> month >> day >> year;
-	
+
 		try
 		{
 			string newMonth;	
